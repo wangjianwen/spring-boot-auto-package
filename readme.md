@@ -11,11 +11,17 @@
 
 新建一个spring-boot工程，项目结构如下：
 example
+
         src
+        
            main 
+           
              java
+             
                  com.youyou.example
+                 
                             HelloWorldController.java
+                            
         pom.xml
         
  其中pom.xml的内容如下：
