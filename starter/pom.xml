@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot-auto-package</artifactId>
+        <groupId>com.youyou.example</groupId>
+        <version>1.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>starter</artifactId>
+    <packaging>pom</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>${auto-pcakage.groupId}</groupId>
+            <artifactId>my-assembly-descriptor</artifactId>
+            <version>${auto-pcakage.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${auto-pcakage.groupId}</groupId>
+            <artifactId>server</artifactId>
+            <version>${auto-pcakage.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- maven 打server包的插件配置 -->
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven.dependency.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>unpack</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>unpack</goal>
+                            </goals>
+                            <configuration>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>com.youyou.example</groupId>
+                                        <artifactId>server</artifactId>
+                                        <version>1.1-SNAPSHOT</version>
+                                        <outputDirectory>${project.build.directory}/script
+                                        </outputDirectory>
+                                        <includes>META-INF/bin/**
+                                        </includes>
+                                    </artifactItem>
+                                </artifactItems>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven.assembly.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.youyou.example</groupId>
+                        <artifactId>my-assembly-descriptor</artifactId>
+                        <version>1.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>my-assembly</descriptorRef>
+                    </descriptorRefs>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>make-assembly</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+    </build>
+</project>
