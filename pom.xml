@@ -9,9 +9,8 @@
     <version>1.1-SNAPSHOT</version>
     <modules>
         <module>server</module>
-        <module>my-assembly-descriptor</module>
+        <module>assembly</module>
         <module>starter</module>
-        <module>example</module>
     </modules>
     <packaging>pom</packaging>
 

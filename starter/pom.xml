@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>${auto-pcakage.groupId}</groupId>
-            <artifactId>my-assembly-descriptor</artifactId>
+            <artifactId>assembly</artifactId>
             <version>${auto-pcakage.version}</version>
         </dependency>
 
@@ -61,14 +61,14 @@
                 <dependencies>
                     <dependency>
                         <groupId>com.youyou.example</groupId>
-                        <artifactId>my-assembly-descriptor</artifactId>
+                        <artifactId>assembly</artifactId>
                         <version>1.1-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
                 <configuration>
                     <appendAssemblyId>false</appendAssemblyId>
                     <descriptorRefs>
-                        <descriptorRef>my-assembly</descriptorRef>
+                        <descriptorRef>assembly</descriptorRef>
                     </descriptorRefs>
             </configuration>
             <executions>
