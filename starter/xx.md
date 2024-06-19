@@ -5,6 +5,8 @@ kind: PodMonitor
 metadata:
   name: gateway-core
   namespace: istio-monitoring
+  labels:
+    istio: core
 spec:
   jobLabel: gateway-core
   namespaceSelector:
